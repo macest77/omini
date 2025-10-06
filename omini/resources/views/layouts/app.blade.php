@@ -14,7 +14,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
-            .text-wrap { white-space: pre-wrap; }
+            .text-wrap { white-space: pre-line; }
         </style>
     </head>
     <body class="font-sans antialiased">

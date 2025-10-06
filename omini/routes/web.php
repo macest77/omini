@@ -29,6 +29,6 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/posts/{post}/edit',  [PostController::class, 'edit'])->name('posts.edit')->middleware(CanEditPost::class);
 Route::post('/posts/{post}/edit',  [PostController::class, 'update'])->name('posts.update')->middleware(CanEditPost::class);
-Route::delete('/comments/{id}',  [CommentController::class, 'delete'])->name('comments.delete')->middleware(CanEditPost::class);
+Route::delete('/comments/{comment}',  [CommentController::class, 'destroy'])->name('comments.delete');
 
 require __DIR__.'/auth.php';

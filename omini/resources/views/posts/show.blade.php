@@ -34,8 +34,18 @@
                 <div class=" text-gray-900 dark:text-gray-100 p-6">
                     <div style="font-style: italic">{{ __('All Comments') }}</div>
                     @foreach($post->comments()->get() as $comment)
-                        <div class="text-wrap">
-                        {{ $comment->comment }}
+                        <div >
+                            <div>{{ $comment->user()->get()[0]['name'] }} - {{ $comment->created_at }}
+                            @if(\Illuminate\Support\Facades\Auth::user())
+                                <a href="javascript:void(0)" onclick="document.getElementById('form_delete_{{ $comment-> id }}').submit()" class="text-red-600">{{ __('Delete') }}</a>
+                                <form action="{{ route('comments.delete', ['comment' => $comment-> id]) }}" id="form_delete_{{ $comment-> id }}" style="height: 0" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                </form>
+                            @endif
+                            </div>
+
+                        <div class="text-wrap">{{ $comment->comment }}</div>
                         <hr />
                         </div>
                     @endforeach
